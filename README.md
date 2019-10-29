@@ -1,2 +1,2 @@
 # SpotifySearch
-A sample VIP structured iOS app
+A Spotify music search Using VIP architecture.
