@@ -8,20 +8,72 @@
 
 /* Begin PBXBuildFile section */
 		EFA90CC923689D8B00F07C46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CC823689D8B00F07C46 /* AppDelegate.swift */; };
-		EFA90CCB23689D8B00F07C46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CCA23689D8B00F07C46 /* ViewController.swift */; };
 		EFA90CCE23689D8B00F07C46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA90CCC23689D8B00F07C46 /* Main.storyboard */; };
 		EFA90CD023689D8F00F07C46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA90CCF23689D8F00F07C46 /* Assets.xcassets */; };
 		EFA90CD323689D8F00F07C46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA90CD123689D8F00F07C46 /* LaunchScreen.storyboard */; };
+		EFA90CFF2368A24700F07C46 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CF92368A24700F07C46 /* Constants.swift */; };
+		EFA90D002368A24700F07C46 /* Containers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CFA2368A24700F07C46 /* Containers.swift */; };
+		EFA90D012368A24700F07C46 /* Vars.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CFB2368A24700F07C46 /* Vars.swift */; };
+		EFA90D022368A24700F07C46 /* Funcs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90CFC2368A24700F07C46 /* Funcs.swift */; };
+		EFA90D082368A27600F07C46 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D052368A27600F07C46 /* Storyboard.swift */; };
+		EFA90D0A2368A27600F07C46 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D072368A27600F07C46 /* LoadingIndicator.swift */; };
+		EFA90D172368A2CB00F07C46 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D0F2368A2CB00F07C46 /* WebService.swift */; };
+		EFA90D182368A2CB00F07C46 /* HTTPConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D112368A2CB00F07C46 /* HTTPConstants.swift */; };
+		EFA90D192368A2CB00F07C46 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D122368A2CB00F07C46 /* APIError.swift */; };
+		EFA90D1A2368A2CB00F07C46 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D132368A2CB00F07C46 /* HTTPRequest.swift */; };
+		EFA90D1B2368A2CB00F07C46 /* URLPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D142368A2CB00F07C46 /* URLPath.swift */; };
+		EFA90D1C2368A2CB00F07C46 /* ServerErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D152368A2CB00F07C46 /* ServerErrorModel.swift */; };
+		EFA90D312368B0E600F07C46 /* TrackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D2C2368B0E600F07C46 /* TrackPresenter.swift */; };
+		EFA90D322368B0E600F07C46 /* TrackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D2D2368B0E600F07C46 /* TrackRouter.swift */; };
+		EFA90D332368B0E600F07C46 /* TrackModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D2E2368B0E600F07C46 /* TrackModels.swift */; };
+		EFA90D342368B0E600F07C46 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D2F2368B0E600F07C46 /* TrackViewController.swift */; };
+		EFA90D352368B0E600F07C46 /* TrackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D302368B0E600F07C46 /* TrackInteractor.swift */; };
+		EFA90D3B2368B10800F07C46 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D362368B10800F07C46 /* SearchPresenter.swift */; };
+		EFA90D3C2368B10800F07C46 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D372368B10800F07C46 /* SearchRouter.swift */; };
+		EFA90D3D2368B10800F07C46 /* SearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D382368B10800F07C46 /* SearchModels.swift */; };
+		EFA90D3E2368B10800F07C46 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D392368B10800F07C46 /* SearchViewController.swift */; };
+		EFA90D3F2368B10800F07C46 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D3A2368B10800F07C46 /* SearchInteractor.swift */; };
+		EFA90D452368B11E00F07C46 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D402368B11E00F07C46 /* LoginPresenter.swift */; };
+		EFA90D462368B11E00F07C46 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D412368B11E00F07C46 /* LoginRouter.swift */; };
+		EFA90D472368B11E00F07C46 /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D422368B11E00F07C46 /* LoginModels.swift */; };
+		EFA90D482368B11E00F07C46 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D432368B11E00F07C46 /* LoginViewController.swift */; };
+		EFA90D492368B11E00F07C46 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D442368B11E00F07C46 /* LoginInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EFA90CC523689D8B00F07C46 /* SpotifySearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifySearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA90CC823689D8B00F07C46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EFA90CCA23689D8B00F07C46 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EFA90CCD23689D8B00F07C46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFA90CCF23689D8F00F07C46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFA90CD223689D8F00F07C46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFA90CD423689D8F00F07C46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFA90CF92368A24700F07C46 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EFA90CFA2368A24700F07C46 /* Containers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Containers.swift; sourceTree = "<group>"; };
+		EFA90CFB2368A24700F07C46 /* Vars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vars.swift; sourceTree = "<group>"; };
+		EFA90CFC2368A24700F07C46 /* Funcs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Funcs.swift; sourceTree = "<group>"; };
+		EFA90D052368A27600F07C46 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		EFA90D072368A27600F07C46 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		EFA90D0F2368A2CB00F07C46 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		EFA90D112368A2CB00F07C46 /* HTTPConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConstants.swift; sourceTree = "<group>"; };
+		EFA90D122368A2CB00F07C46 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		EFA90D132368A2CB00F07C46 /* HTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
+		EFA90D142368A2CB00F07C46 /* URLPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLPath.swift; sourceTree = "<group>"; };
+		EFA90D152368A2CB00F07C46 /* ServerErrorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerErrorModel.swift; sourceTree = "<group>"; };
+		EFA90D2C2368B0E600F07C46 /* TrackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPresenter.swift; sourceTree = "<group>"; };
+		EFA90D2D2368B0E600F07C46 /* TrackRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRouter.swift; sourceTree = "<group>"; };
+		EFA90D2E2368B0E600F07C46 /* TrackModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModels.swift; sourceTree = "<group>"; };
+		EFA90D2F2368B0E600F07C46 /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
+		EFA90D302368B0E600F07C46 /* TrackInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInteractor.swift; sourceTree = "<group>"; };
+		EFA90D362368B10800F07C46 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		EFA90D372368B10800F07C46 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		EFA90D382368B10800F07C46 /* SearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModels.swift; sourceTree = "<group>"; };
+		EFA90D392368B10800F07C46 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		EFA90D3A2368B10800F07C46 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		EFA90D402368B11E00F07C46 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		EFA90D412368B11E00F07C46 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		EFA90D422368B11E00F07C46 /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
+		EFA90D432368B11E00F07C46 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EFA90D442368B11E00F07C46 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +106,144 @@
 		EFA90CC723689D8B00F07C46 /* SpotifySearch */ = {
 			isa = PBXGroup;
 			children = (
-				EFA90CC823689D8B00F07C46 /* AppDelegate.swift */,
-				EFA90CCA23689D8B00F07C46 /* ViewController.swift */,
-				EFA90CCC23689D8B00F07C46 /* Main.storyboard */,
-				EFA90CCF23689D8F00F07C46 /* Assets.xcassets */,
-				EFA90CD123689D8F00F07C46 /* LaunchScreen.storyboard */,
-				EFA90CD423689D8F00F07C46 /* Info.plist */,
+				EFA90D1E2368A34000F07C46 /* Storyboards */,
+				EFA90CDA23689FD700F07C46 /* Scenes */,
+				EFA90CF72368A24700F07C46 /* Globals */,
+				EFA90D042368A27600F07C46 /* Providers */,
+				EFA90D0B2368A2CB00F07C46 /* Services */,
+				EFA90D1D2368A2E000F07C46 /* Supporting files */,
 			);
 			path = SpotifySearch;
+			sourceTree = "<group>";
+		};
+		EFA90CDA23689FD700F07C46 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90D1F2368AD5E00F07C46 /* Track */,
+				EFA90CE82368A13A00F07C46 /* Search */,
+				EFA90CE72368A12300F07C46 /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		EFA90CE72368A12300F07C46 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90D402368B11E00F07C46 /* LoginPresenter.swift */,
+				EFA90D412368B11E00F07C46 /* LoginRouter.swift */,
+				EFA90D422368B11E00F07C46 /* LoginModels.swift */,
+				EFA90D432368B11E00F07C46 /* LoginViewController.swift */,
+				EFA90D442368B11E00F07C46 /* LoginInteractor.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		EFA90CE82368A13A00F07C46 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90D362368B10800F07C46 /* SearchPresenter.swift */,
+				EFA90D372368B10800F07C46 /* SearchRouter.swift */,
+				EFA90D382368B10800F07C46 /* SearchModels.swift */,
+				EFA90D392368B10800F07C46 /* SearchViewController.swift */,
+				EFA90D3A2368B10800F07C46 /* SearchInteractor.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		EFA90CF72368A24700F07C46 /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90CF82368A24700F07C46 /* Namspaces And Containers */,
+				EFA90CFD2368A24700F07C46 /* Extensions */,
+			);
+			path = Globals;
+			sourceTree = "<group>";
+		};
+		EFA90CF82368A24700F07C46 /* Namspaces And Containers */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90CF92368A24700F07C46 /* Constants.swift */,
+				EFA90CFA2368A24700F07C46 /* Containers.swift */,
+				EFA90CFB2368A24700F07C46 /* Vars.swift */,
+				EFA90CFC2368A24700F07C46 /* Funcs.swift */,
+			);
+			path = "Namspaces And Containers";
+			sourceTree = "<group>";
+		};
+		EFA90CFD2368A24700F07C46 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EFA90D042368A27600F07C46 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90D052368A27600F07C46 /* Storyboard.swift */,
+				EFA90D072368A27600F07C46 /* LoadingIndicator.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		EFA90D0B2368A2CB00F07C46 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90D0C2368A2CB00F07C46 /* WebService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EFA90D0C2368A2CB00F07C46 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90D0F2368A2CB00F07C46 /* WebService.swift */,
+				EFA90D102368A2CB00F07C46 /* WebServiceModels */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		EFA90D102368A2CB00F07C46 /* WebServiceModels */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90D112368A2CB00F07C46 /* HTTPConstants.swift */,
+				EFA90D122368A2CB00F07C46 /* APIError.swift */,
+				EFA90D132368A2CB00F07C46 /* HTTPRequest.swift */,
+				EFA90D142368A2CB00F07C46 /* URLPath.swift */,
+				EFA90D152368A2CB00F07C46 /* ServerErrorModel.swift */,
+			);
+			path = WebServiceModels;
+			sourceTree = "<group>";
+		};
+		EFA90D1D2368A2E000F07C46 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90CC823689D8B00F07C46 /* AppDelegate.swift */,
+				EFA90CD423689D8F00F07C46 /* Info.plist */,
+				EFA90CCF23689D8F00F07C46 /* Assets.xcassets */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		EFA90D1E2368A34000F07C46 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90CCC23689D8B00F07C46 /* Main.storyboard */,
+				EFA90CD123689D8F00F07C46 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		EFA90D1F2368AD5E00F07C46 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90D2C2368B0E600F07C46 /* TrackPresenter.swift */,
+				EFA90D2D2368B0E600F07C46 /* TrackRouter.swift */,
+				EFA90D2E2368B0E600F07C46 /* TrackModels.swift */,
+				EFA90D2F2368B0E600F07C46 /* TrackViewController.swift */,
+				EFA90D302368B0E600F07C46 /* TrackInteractor.swift */,
+			);
+			path = Track;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +317,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFA90CCB23689D8B00F07C46 /* ViewController.swift in Sources */,
+				EFA90D002368A24700F07C46 /* Containers.swift in Sources */,
+				EFA90D1A2368A2CB00F07C46 /* HTTPRequest.swift in Sources */,
+				EFA90D3C2368B10800F07C46 /* SearchRouter.swift in Sources */,
+				EFA90D182368A2CB00F07C46 /* HTTPConstants.swift in Sources */,
+				EFA90D0A2368A27600F07C46 /* LoadingIndicator.swift in Sources */,
+				EFA90D482368B11E00F07C46 /* LoginViewController.swift in Sources */,
+				EFA90D352368B0E600F07C46 /* TrackInteractor.swift in Sources */,
+				EFA90CFF2368A24700F07C46 /* Constants.swift in Sources */,
+				EFA90D492368B11E00F07C46 /* LoginInteractor.swift in Sources */,
+				EFA90D452368B11E00F07C46 /* LoginPresenter.swift in Sources */,
+				EFA90D472368B11E00F07C46 /* LoginModels.swift in Sources */,
+				EFA90D322368B0E600F07C46 /* TrackRouter.swift in Sources */,
+				EFA90D3F2368B10800F07C46 /* SearchInteractor.swift in Sources */,
+				EFA90D012368A24700F07C46 /* Vars.swift in Sources */,
+				EFA90D172368A2CB00F07C46 /* WebService.swift in Sources */,
+				EFA90D332368B0E600F07C46 /* TrackModels.swift in Sources */,
+				EFA90D462368B11E00F07C46 /* LoginRouter.swift in Sources */,
+				EFA90D1B2368A2CB00F07C46 /* URLPath.swift in Sources */,
+				EFA90D022368A24700F07C46 /* Funcs.swift in Sources */,
+				EFA90D3D2368B10800F07C46 /* SearchModels.swift in Sources */,
+				EFA90D082368A27600F07C46 /* Storyboard.swift in Sources */,
+				EFA90D312368B0E600F07C46 /* TrackPresenter.swift in Sources */,
+				EFA90D3E2368B10800F07C46 /* SearchViewController.swift in Sources */,
 				EFA90CC923689D8B00F07C46 /* AppDelegate.swift in Sources */,
+				EFA90D1C2368A2CB00F07C46 /* ServerErrorModel.swift in Sources */,
+				EFA90D192368A2CB00F07C46 /* APIError.swift in Sources */,
+				EFA90D342368B0E600F07C46 /* TrackViewController.swift in Sources */,
+				EFA90D3B2368B10800F07C46 /* SearchPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5M548JFK3K;
-				INFOPLIST_FILE = SpotifySearch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SpotifySearch/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +510,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5M548JFK3K;
-				INFOPLIST_FILE = SpotifySearch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SpotifySearch/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
