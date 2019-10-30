@@ -6,11 +6,13 @@ PODS:
   - RxRelay (5.0.0):
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
+  - SpotifyLogin (0.1.6)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
+  - SpotifyLogin (~> 0.1)
 
 SPEC REPOS:
   trunk:
@@ -18,13 +20,15 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SpotifyLogin
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  SpotifyLogin: 9cdf82ff13e5f37e5ddc7fd07cf9793a9ebd1124
 
-PODFILE CHECKSUM: 21cabc2b46d49da1c46116208f84ff4f916d1429
+PODFILE CHECKSUM: 9c7791ab1bb6efe700c401d87bbad0ba32d349df
 
 COCOAPODS: 1.8.0.beta.2

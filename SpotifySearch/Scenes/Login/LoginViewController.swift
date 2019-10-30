@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
     }
     
     
-    //MARK: Outlets and vars
+    //MARK: - Outlets and vars
     
     
     // MARK: Setup
@@ -50,27 +50,23 @@ class LoginViewController: UIViewController {
         router.dataStore = interactor
     }
     
-    // MARK: Routing
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
-    // MARK: View lifecycle
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        prepareLoginButton()
     }
     
-    //MARK: Actions
-    
-    
-    //MARK: Funcs
-    
+    //MARK: - Funcs
+    func prepareLoginButton() {
+        
+        let button = SpotifyLoginProvider.getLoginButton(for: self)
+        self.view.addSubview(button)
+        
+        //height and width has been set before.
+        let horizontalConstraint = NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 50)
+        view.addConstraints([horizontalConstraint, verticalConstraint])
+    }
     
     //end of class
 }
@@ -78,4 +74,11 @@ class LoginViewController: UIViewController {
 //MARK: - Extensions
 extension LoginViewController: LoginDisplayLogic {
     
+}
+
+//***
+extension LoginViewController: SpotifyLoginDelegate {
+    func loginSuccessfull() {
+        //router?.routeToSearch()
+    }
 }
