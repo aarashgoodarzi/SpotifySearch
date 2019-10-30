@@ -13,13 +13,19 @@
 import UIKit
 
 protocol LoginDisplayLogic: AnyObject {
-    
+    func displaySuccessCheckLoginState(viewModel: Login.CheckState.ViewModel.Success)
+    func displayNoConnectionCheckLoginState(viewModel: Login.CheckState.ViewModel.Failure)
+    func displayServerErrorCheckLoginState(viewModel: Login.CheckState.ViewModel.Failure)
 }
 
 class LoginViewController: UIViewController {
     
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -34,7 +40,7 @@ class LoginViewController: UIViewController {
     
     
     //MARK: - Outlets and vars
-    
+    @IBOutlet weak var retryBtn: UIButton!
     
     // MARK: Setup
     private func setup() {
@@ -53,19 +59,32 @@ class LoginViewController: UIViewController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepareLoginButton()
+        checkLoginState()
+    }
+    
+    //MARK: - Actions
+    @IBAction func retryBtnPressed(_ sender : AnyObject) {
+        retryBtn.isHidden = true
+        checkLoginState()
     }
     
     //MARK: - Funcs
     func prepareLoginButton() {
         
         let button = SpotifyLoginProvider.getLoginButton(for: self)
-        self.view.addSubview(button)
+        view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         //height and width has been set before.
         let horizontalConstraint = NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 50)
+        let verticalConstraint = NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: -50)
         view.addConstraints([horizontalConstraint, verticalConstraint])
+    }
+    
+    //**
+    func checkLoginState() {
+        let request = Login.CheckState.Request()
+        interactor?.checkLoginState(request: request)
     }
     
     //end of class
@@ -73,12 +92,33 @@ class LoginViewController: UIViewController {
 
 //MARK: - Extensions
 extension LoginViewController: LoginDisplayLogic {
+ 
+    func displaySuccessCheckLoginState(viewModel: Login.CheckState.ViewModel.Success) {
+        
+        //we have access token
+        if viewModel.isUserLogedIn {
+            router?.routeToSearch()
+            return
+        }
+        
+        //we have no access token!
+        prepareLoginButton()
+    }
     
+    func displayNoConnectionCheckLoginState(viewModel: Login.CheckState.ViewModel.Failure) {
+        retryBtn.isHidden = false
+        Global.Funcs.showNoConnectionAlert()
+    }
+
+    func displayServerErrorCheckLoginState(viewModel: Login.CheckState.ViewModel.Failure) {
+        prepareLoginButton()
+        Global.Funcs.showAlert(message: viewModel.message)
+    }
 }
 
 //***
 extension LoginViewController: SpotifyLoginDelegate {
     func loginSuccessfull() {
-        //router?.routeToSearch()
+        checkLoginState()
     }
 }

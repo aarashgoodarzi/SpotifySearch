@@ -14,28 +14,28 @@ import UIKit
 
 enum Login {
     
-    struct Request {
-        
-    }
     
-    struct Response {
-        let state: FetchState<Any, Any>
-    }
-    
-    enum ViewModel {
-        
-        
-        struct Success {
+    enum CheckState {
+        struct Request {
             
         }
         
-        struct Loading {
+        struct Response {
+            let state: Result<Bool, Error>?
+        }
+        
+        enum ViewModel {
+            
+            
+            struct Success {
+                let isUserLogedIn: Bool
+            }
+            
+            struct Failure {
+                var message: String? = nil
+            }
             
         }
-        
-        struct Failure {
-            var message: String? = nil
-        }
-        
     }
+    
 }

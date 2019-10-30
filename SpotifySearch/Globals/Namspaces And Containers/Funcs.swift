@@ -10,8 +10,15 @@ import UIKit
 
 //Mark: - alert
 extension Global.Funcs {
-    func showAlert() {
-        print("an Alert :p")
+    static func showAlert(message: String?) {
+        guard let message = message else {
+            return
+        }
+        print(message)
+    }
+    
+    static func showNoConnectionAlert() {
+        print("no connection!")
     }
 }
 

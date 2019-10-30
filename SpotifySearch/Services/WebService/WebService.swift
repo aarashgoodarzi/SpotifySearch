@@ -68,9 +68,4 @@ public enum WebServcie: WebServiceProvider {
     }
 }
 
-func hjjkk() {
-    WebServcie.request(HTTPRequest<URL as! Codable>) {_,_ in
-        
-    }
-        
-}
+

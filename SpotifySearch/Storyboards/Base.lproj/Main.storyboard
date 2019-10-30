@@ -25,17 +25,61 @@
                                     <constraint firstAttribute="width" secondItem="fUl-Ut-eAh" secondAttribute="height" multiplier="1:1" id="UcB-lM-MRp"/>
                                 </constraints>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4we-YO-IQx">
+                                <rect key="frame" x="0.0" y="468" width="320" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eCO-Cd-fFr"/>
+                                </constraints>
+                                <state key="normal" title="Retry">
+                                    <color key="titleColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="retryBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DCz-Ea-pCM"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.1035257448" green="0.1035257448" blue="0.1035257448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4we-YO-IQx" secondAttribute="bottom" constant="50" id="02D-de-SbJ"/>
+                            <constraint firstItem="4we-YO-IQx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7Gn-Qc-gIT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4we-YO-IQx" secondAttribute="trailing" id="AoB-HJ-tdv"/>
                             <constraint firstItem="fUl-Ut-eAh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="h6t-Gy-0uJ"/>
                             <constraint firstItem="fUl-Ut-eAh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kR1-xY-gMM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="retryBtn" destination="4we-YO-IQx" id="ovc-EZ-1bh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="q8p-U0-ZsV">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="jR9-4Q-LG0" customClass="SearchViewController" customModule="SpotifySearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="07o-MS-RF6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="sUU-EU-Qfk">
+                                <rect key="frame" x="8" y="40" width="304" height="56"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1035257448" green="0.1035257448" blue="0.1035257448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sUU-EU-Qfk" firstAttribute="trailing" secondItem="NI7-9p-czs" secondAttribute="trailing" constant="-8" id="5tt-eP-sJ2"/>
+                            <constraint firstItem="sUU-EU-Qfk" firstAttribute="leading" secondItem="NI7-9p-czs" secondAttribute="leading" constant="8" id="Pfb-b7-DJe"/>
+                            <constraint firstItem="sUU-EU-Qfk" firstAttribute="top" secondItem="NI7-9p-czs" secondAttribute="top" constant="20" id="h1a-ck-t1d"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NI7-9p-czs"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sBp-o0-a7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="960" y="130"/>
         </scene>
     </scenes>
     <resources>

@@ -90,9 +90,9 @@ extension HTTP {
 
 //**
 var baseRequestHeaders: [String: String] {
-  return [HTTPHeaders.UserAgent: HTTPHeaderValues.UserAgent,
-          HTTPHeaders.AcceptLanguage: HTTPHeaderValues.AcceptLanguage,
-          HTTPHeaders.ApplicationName: HTTPHeaderValues.applicationName]
+  return [HTTP.Headers.UserAgent: HTTP.HeaderValues.UserAgent,
+          HTTP.Headers.AcceptLanguage: HTTP.HeaderValues.AcceptLanguage,
+          HTTP.Headers.ApplicationName: HTTP.HeaderValues.applicationName]
 }
 
 

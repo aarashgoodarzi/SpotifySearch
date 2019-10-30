@@ -36,7 +36,7 @@ extension UIViewController {
         
     }
     
-    static func instantiateFromStoryboard(storyboard: Storyboard) -> Self {
+    static func instantiateFrom(storyboard: Storyboard) -> Self {
         return storyboard.viewController(viewControllerClass: self)
     }
 }

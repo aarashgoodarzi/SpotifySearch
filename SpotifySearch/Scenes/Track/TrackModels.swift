@@ -19,7 +19,7 @@ enum Track {
     }
     
     struct Response {
-        let state: FetchState<Any, Any>
+        let state: Result<Any, Error>
     }
     
     enum ViewModel {

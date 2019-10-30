@@ -40,6 +40,9 @@
 		EFA90D482368B11E00F07C46 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D432368B11E00F07C46 /* LoginViewController.swift */; };
 		EFA90D492368B11E00F07C46 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D442368B11E00F07C46 /* LoginInteractor.swift */; };
 		EFA90D4B2369756900F07C46 /* SpotifyLoginProvicer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D4A2369756900F07C46 /* SpotifyLoginProvicer.swift */; };
+		EFA90D4D2369BB5B00F07C46 /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D4C2369BB5B00F07C46 /* TokenProvider.swift */; };
+		EFA90D4F2369BB9800F07C46 /* KeychainProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D4E2369BB9800F07C46 /* KeychainProvider.swift */; };
+		EFA90D512369E2E800F07C46 /* ReachabilityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D502369E2E800F07C46 /* ReachabilityProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +83,9 @@
 		EFA90D432368B11E00F07C46 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EFA90D442368B11E00F07C46 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		EFA90D4A2369756900F07C46 /* SpotifyLoginProvicer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyLoginProvicer.swift; sourceTree = "<group>"; };
+		EFA90D4C2369BB5B00F07C46 /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
+		EFA90D4E2369BB9800F07C46 /* KeychainProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainProvider.swift; sourceTree = "<group>"; };
+		EFA90D502369E2E800F07C46 /* ReachabilityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +215,9 @@
 				EFA90D052368A27600F07C46 /* Storyboard.swift */,
 				EFA90D072368A27600F07C46 /* LoadingIndicator.swift */,
 				EFA90D4A2369756900F07C46 /* SpotifyLoginProvicer.swift */,
+				EFA90D4C2369BB5B00F07C46 /* TokenProvider.swift */,
+				EFA90D4E2369BB9800F07C46 /* KeychainProvider.swift */,
+				EFA90D502369E2E800F07C46 /* ReachabilityProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -405,11 +414,14 @@
 				EFA90D172368A2CB00F07C46 /* WebService.swift in Sources */,
 				EFA90D332368B0E600F07C46 /* TrackModels.swift in Sources */,
 				EFA90D462368B11E00F07C46 /* LoginRouter.swift in Sources */,
+				EFA90D512369E2E800F07C46 /* ReachabilityProvider.swift in Sources */,
 				EFA90D1B2368A2CB00F07C46 /* URLPath.swift in Sources */,
 				EFA90D022368A24700F07C46 /* Funcs.swift in Sources */,
 				EFA90D3D2368B10800F07C46 /* SearchModels.swift in Sources */,
 				EFA90D082368A27600F07C46 /* Storyboard.swift in Sources */,
 				EFA90D312368B0E600F07C46 /* TrackPresenter.swift in Sources */,
+				EFA90D4F2369BB9800F07C46 /* KeychainProvider.swift in Sources */,
+				EFA90D4D2369BB5B00F07C46 /* TokenProvider.swift in Sources */,
 				EFA90D3E2368B10800F07C46 /* SearchViewController.swift in Sources */,
 				EFA90CC923689D8B00F07C46 /* AppDelegate.swift in Sources */,
 				EFA90D1C2368A2CB00F07C46 /* ServerErrorModel.swift in Sources */,
@@ -566,11 +578,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5M548JFK3K;
 				INFOPLIST_FILE = "$(SRCROOT)/SpotifySearch/Supporting files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mydigipay.spotifytest1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mydigipay.spotifytest12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -585,11 +598,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5M548JFK3K;
 				INFOPLIST_FILE = "$(SRCROOT)/SpotifySearch/Supporting files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mydigipay.spotifytest1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mydigipay.spotifytest12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

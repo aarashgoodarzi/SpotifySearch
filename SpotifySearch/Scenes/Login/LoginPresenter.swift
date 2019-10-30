@@ -13,13 +13,31 @@
 import UIKit
 
 protocol LoginPresentationLogic: AnyObject {
-    
+    func presentCheckLoginState(response: Login.CheckState.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic {
     
     weak var viewController: LoginDisplayLogic?
     
-    
+    func presentCheckLoginState(response: Login.CheckState.Response) {
+        
+        guard let state = response.state else {
+            let viewModel = Login.CheckState.ViewModel.Failure(message: nil)
+            viewController?.displayNoConnectionCheckLoginState(viewModel: viewModel)
+            return
+        }
+        switch state {
+        case .success(let isUserLogedIn):
+            
+            let viewModel = Login.CheckState.ViewModel.Success(isUserLogedIn: isUserLogedIn)
+            viewController?.displaySuccessCheckLoginState(viewModel: viewModel)
+            
+        case .failure(let error):
+            
+            let viewModel = Login.CheckState.ViewModel.Failure(message: error.localizedDescription)
+            viewController?.displayServerErrorCheckLoginState(viewModel: viewModel)
+        }
+    }
     //end of class
 }

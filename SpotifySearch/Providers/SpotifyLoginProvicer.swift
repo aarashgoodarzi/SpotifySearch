@@ -26,12 +26,12 @@ class SpotifyLoginProvider {
     
     //**
     static var clientID: String {
-        return "ba05b9cd59634cefa8493ac961d76ed6"
+        return "a30e4faff86a4bf0b88202265fd57929"
     }
     
     //**
     static var clientSecret: String {
-        return "ba05b9cd59634cefa8493ac961d76ed6"
+        return "0cb8af54aa63494fa620caf2d24c2a42"
     }
     
     //**
@@ -60,7 +60,19 @@ class SpotifyLoginProvider {
     }
     
     //**
-    @objc func loginSuccessful() {
+    //this method implemented to make SpotifyLogin actions solid. and also separate token managmnt from interactor.
+    static func checkLoginState(completion: @escaping (_ isUserLogedIn: Bool,_ error: Error?) -> Void)  {
+         SpotifyLogin.shared.getAccessToken { (token, error) in
+            TokenProvider.save(token: token)
+            let isUserLogedIn = token != nil && error == nil
+            completion(isUserLogedIn, error)
+        }
+    }
+    
+    
+    
+    //**
+    @objc static func loginSuccessful() {
         NotificationCenter.default.removeObserver(self)
         SpotifyLoginProvider.delegate?.loginSuccessfull()
     }

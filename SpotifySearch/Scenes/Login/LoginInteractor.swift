@@ -13,7 +13,7 @@
 import UIKit
 
 protocol LoginBusinessLogic: AnyObject {
-    
+    func checkLoginState(request: Login.CheckState.Request)
 }
 
 protocol LoginDataStore {
@@ -24,6 +24,34 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     var presenter: LoginPresentationLogic?
     
+    func checkLoginState(request: Login.CheckState.Request) {
+        
+        ReachabilityProvider.noConnection {
+            let response = Login.CheckState.Response(state: nil)
+            self.presenter?.presentCheckLoginState(response: response)
+        }
+        
+        //already has token 
+        if TokenProvider.value != nil {
+            let response = Login.CheckState.Response(state: Result.success(true))
+            self.presenter?.presentCheckLoginState(response: response)
+            return
+        }
+        
+        //try to get token
+        SpotifyLoginProvider.checkLoginState { isUserLogedIn, error in
+            //error
+            if let error = error {
+                let response = Login.CheckState.Response(state: Result.failure(error))
+                self.presenter?.presentCheckLoginState(response: response)
+                return
+            }
+            
+            //no error
+            let response = Login.CheckState.Response(state: Result.success(isUserLogedIn))
+            self.presenter?.presentCheckLoginState(response: response)
+        }
+    }
     
     //end of class
 }

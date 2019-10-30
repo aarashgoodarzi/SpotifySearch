@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol LoginRoutingLogic: AnyObject {
-    
+    func routeToSearch()
 }
 
 protocol LoginDataPassing {
@@ -25,6 +25,25 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     weak var viewController: LoginViewController?
     var dataStore: LoginDataStore?
     
+    func routeToSearch() {
+        let destinationVC = SearchViewController.instantiateFrom(storyboard: .main)
+        guard var destinationDS = destinationVC.router?.dataStore, let dataStore = self.dataStore, let viewController = viewController else {
+            return
+        }
+        
+        passDataToBizInfo(source: dataStore, destination: &destinationDS)
+        navigateToBizInfo(source: viewController, destination: destinationVC)
+    }
     
+    func passDataToBizInfo(source: LoginDataStore, destination: inout SearchDataStore) {
+        
+    }
+    
+    func navigateToBizInfo(source: LoginViewController, destination: SearchViewController) {
+        DispatchQueue.main.async {
+            source.present(destination, animated: true, completion: nil)
+        }
+        
+    }
     //end of class
 }

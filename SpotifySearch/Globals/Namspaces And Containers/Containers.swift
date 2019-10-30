@@ -21,6 +21,10 @@ enum Global {
     enum Constants {
         
     }
+    
+    enum Keys {
+        
+    }
 }
 
 //MARK: Server Models
