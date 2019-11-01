@@ -64,3 +64,8 @@ enum Strings {
         
     }
 }
+
+//MARK: - Seeds ; fake data and test seeds
+public enum Seed {
+    
+}
