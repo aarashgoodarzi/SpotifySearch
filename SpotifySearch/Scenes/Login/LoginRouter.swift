@@ -41,7 +41,9 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     
     func navigateToBizInfo(source: LoginViewController, destination: SearchViewController) {
         DispatchQueue.main.async {
-            source.present(destination, animated: true, completion: nil)
+            let navController = NavigationController(rootViewController: destination)
+            navController.navigationItem.title = "Sdfsdfsdfsdf"
+            source.present(navController, animated: true, completion: nil)
         }
         
     }

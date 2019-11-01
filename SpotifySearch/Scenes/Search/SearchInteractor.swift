@@ -14,14 +14,16 @@ import UIKit
 
 protocol SearchBusinessLogic: AnyObject {
     func searchTracks(request: Search.Tracks.Request)
+    func saveTrackInDataStore(request: Search.SaveTrackInDataStore.Request)
 }
 
 protocol SearchDataStore {
-    
+    var track: ServerModels.Response.TracksModel.Item? { get set }
 }
 
 class SearchInteractor: SearchBusinessLogic, SearchDataStore {
     
+    var track: ServerModels.Response.TracksModel.Item?
     var presenter: SearchPresentationLogic?
     
     func searchTracks(request: Search.Tracks.Request) {
@@ -44,5 +46,11 @@ class SearchInteractor: SearchBusinessLogic, SearchDataStore {
             self.presenter?.presentSearchTracks(response: response)
         }
     }
+    
+    //**
+    func saveTrackInDataStore(request: Search.SaveTrackInDataStore.Request) {
+        self.track = request.track
+    }
+    
     //end of class
 }

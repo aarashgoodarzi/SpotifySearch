@@ -13,7 +13,7 @@
 import UIKit
 
 protocol TrackDisplayLogic: AnyObject {
-    
+    func displaySetTrack(viewModel: Track.Set.ViewModel)
 }
 
 class TrackViewController: UIViewController {
@@ -34,7 +34,12 @@ class TrackViewController: UIViewController {
     
     
     //MARK: Outlets and vars
-    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var singer: UILabel!
+    @IBOutlet weak var album: UILabel!
+    @IBOutlet weak var popularity: UILabel!
+    @IBOutlet weak var id: UILabel!
+    @IBOutlet weak var trackImage: UIImageView!
     
     // MARK: Setup
     private func setup() {
@@ -53,14 +58,17 @@ class TrackViewController: UIViewController {
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setTrack()
     }
     
     //MARK: Actions
     
     
     //MARK: Funcs
-    
+    func setTrack() {
+        let request = Track.Set.Request()
+        interactor?.setTrack(request: request)
+    }
     
     //end of class
 }
@@ -68,4 +76,12 @@ class TrackViewController: UIViewController {
 //MARK: - Extensions
 extension TrackViewController: TrackDisplayLogic {
     
+    func displaySetTrack(viewModel: Track.Set.ViewModel) {
+        self.name.text = viewModel.name
+        self.singer.text = viewModel.singer
+        self.album.text = viewModel.album
+        self.id.text = viewModel.id
+        self.popularity.text = viewModel.popularity
+        self.trackImage.downloadImage(url: viewModel.imageUrl)
+    }
 }

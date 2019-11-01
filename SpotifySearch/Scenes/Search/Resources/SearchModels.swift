@@ -36,5 +36,10 @@ enum Search {
             
         }
     }
-   
+    
+    enum SaveTrackInDataStore {
+        struct Request {
+            let track: ServerModels.Response.TracksModel.Item
+        }
+    }
 }

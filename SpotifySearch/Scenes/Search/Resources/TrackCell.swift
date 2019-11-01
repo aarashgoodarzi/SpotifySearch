@@ -19,6 +19,7 @@ class TrackCell: UITableViewCell {
     func set(track: ServerModels.Response.TracksModel.Item?) {
         self.track = track
         self.name.text = track?.name
+        self.singer.text = track?.artists?.first?.name
         self.album.text = track?.album?.name
         self.trackImage.downloadImage(url: track?.album?.images?.first?.url)
     }

@@ -14,28 +14,22 @@ import UIKit
 
 enum Track {
     
-    struct Request {
-        
-    }
-    
-    struct Response {
-        let state: Result<Any, Error>
-    }
-    
-    enum ViewModel {
-        
-        
-        struct Success {
+    enum Set {
+        struct Request {
             
         }
         
-        struct Loading {
-            
+        struct Response {
+            let track: ServerModels.Response.TracksModel.Item?
         }
         
-        struct Failure {
-            var message: String? = nil
+        struct ViewModel {
+            let name: String
+            let album: String
+            let singer: String
+            let popularity: String
+            let id: String
+            let imageUrl: String
         }
-        
     }
 }

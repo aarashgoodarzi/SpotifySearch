@@ -9,8 +9,9 @@
 import Foundation
 
 extension Global.Constants {
-        static let AuthUTMSourceQueryValue = "spotify-sdk"
-        static let AuthUTMMediumCampaignQueryValue = "spotifylogin"
-        static let KeychainUsernameKey = "SpotifyUsername"
-        static let KeychainServiceValue = "com.spotify.SpotifyLogin"
+    static let ThrottleMS = 700
+    static let AuthUTMSourceQueryValue = "spotify-sdk"
+    static let AuthUTMMediumCampaignQueryValue = "spotifylogin"
+    static let KeychainUsernameKey = "SpotifyUsername"
+    static let KeychainServiceValue = "com.spotify.SpotifyLogin"
 }

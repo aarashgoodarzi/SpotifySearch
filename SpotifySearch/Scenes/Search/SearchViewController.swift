@@ -84,6 +84,14 @@ class SearchViewController: UIViewController {
     func prepareUI() {
         prepareSearchBar()
         prepareTableView()
+        prepareNavBar()
+    }
+    
+    //**
+    func prepareNavBar() {
+        self.navigationItem.title = "Spotify Search"
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     //**
@@ -100,14 +108,17 @@ class SearchViewController: UIViewController {
         }
         searchBar
             .rx.text
-            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(Global.Constants.ThrottleMS), scheduler: MainScheduler.instance)
+            .filter({ (text) -> Bool in
+                return !text.isBlank
+            })
             .flatMapLatest({ text -> Observable<String> in
                 guard let text = text else {
                     return Observable.just("")
                 }
                 return Observable.just(text)
             })
-            
+
             .distinctUntilChanged()
             .subscribe { query in
                 self.searchTracks(query: query.element)
@@ -138,6 +149,12 @@ class SearchViewController: UIViewController {
         interactor?.searchTracks(request: request)
     }
     
+    //**
+    func saveTrackInDataStore(track: ServerModels.Response.TracksModel.Item) {
+        let request = Search.SaveTrackInDataStore.Request(track: track)
+        interactor?.saveTrackInDataStore(request: request)
+    }
+    
     //end of class
 }
 
@@ -166,12 +183,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tracksTableView.dequeueReusableCell(withIdentifier: Strings.Identifiers.TrackCell, for: indexPath) as? TrackCell else {
+        guard
+            let cell = tracksTableView.dequeueReusableCell(withIdentifier: Strings.Identifiers.TrackCell, for: indexPath) as? TrackCell,
+            let track = tracks?[indexPath.row] else {
             return UITableViewCell()
         }
-        
-        //let cell33 = tableView.dequeueReusableCell(withIdentifier: Strings.Identifiers.TrackCell, for: indexPath)
-        let track = tracks?[indexPath.row]
         cell.set(track: track)
         return cell
     }
@@ -181,7 +197,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard let track = tracks?[indexPath.row] else {
+            return
+        }
+        saveTrackInDataStore(track: track)
+        router?.routeToTrack()
     }
     
     

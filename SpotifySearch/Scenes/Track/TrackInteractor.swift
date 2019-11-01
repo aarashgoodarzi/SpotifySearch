@@ -13,17 +13,21 @@
 import UIKit
 
 protocol TrackBusinessLogic: AnyObject {
-    
+    func setTrack(request: Track.Set.Request)
 }
 
 protocol TrackDataStore {
-    
+    var track: ServerModels.Response.TracksModel.Item? { get set }
 }
 
 class TrackInteractor: TrackBusinessLogic, TrackDataStore {
-    
+    var track: ServerModels.Response.TracksModel.Item? 
     var presenter: TrackPresentationLogic?
     
+    func setTrack(request: Track.Set.Request) {
+        let response = Track.Set.Response(track: track)
+        presenter?.presentSetTrack(response: response)
+    }
     
     //end of class
 }

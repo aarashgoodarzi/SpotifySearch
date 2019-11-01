@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol SearchRoutingLogic: AnyObject {
-    
+    func routeToTrack()
 }
 
 protocol SearchDataPassing {
@@ -25,6 +25,25 @@ class SearchRouter: NSObject, SearchRoutingLogic, SearchDataPassing {
     weak var viewController: SearchViewController?
     var dataStore: SearchDataStore?
     
+    func routeToTrack() {
+        let destinationVC = TrackViewController.instantiateFrom(storyboard: .main)
+        guard var destinationDS = destinationVC.router?.dataStore, let dataStore = self.dataStore, let navController = viewController?.navigationController else {
+            return
+        }
+        
+        passDataToBizInfo(source: dataStore, destination: &destinationDS)
+        navigateToBizInfo(source: navController, destination: destinationVC)
+    }
+    
+    func passDataToBizInfo(source: SearchDataStore, destination: inout TrackDataStore) {
+        destination.track = source.track
+    }
+    
+    func navigateToBizInfo(source: UINavigationController, destination: TrackViewController) {
+        DispatchQueue.main.async {
+            source.pushViewController(destination, animated: true)
+        }
+    }
     
     //end of class
 }

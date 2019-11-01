@@ -13,13 +13,27 @@
 import UIKit
 
 protocol TrackPresentationLogic: AnyObject {
-    
+    func presentSetTrack(response: Track.Set.Response)
 }
 
 class TrackPresenter: TrackPresentationLogic {
     
     weak var viewController: TrackDisplayLogic?
     
+    func presentSetTrack(response: Track.Set.Response) {
+        
+        guard let name = response.track?.name,
+            let singer = response.track?.artists?.first?.name,
+            let album = response.track?.artists?.first?.name,
+            let imageUrl = response.track?.album?.images?.first?.url,
+            let popularity = response.track?.popularity,
+            let id = response.track?.id else {
+                return
+        }
+        
+        let viewModel = Track.Set.ViewModel(name: name, album: album, singer: singer, popularity: "Popularity: " + String(popularity), id: "ID: " + id, imageUrl: imageUrl)
+        viewController?.displaySetTrack(viewModel: viewModel)
+    }
     
     //end of class
 }
