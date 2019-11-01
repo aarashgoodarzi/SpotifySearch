@@ -21,4 +21,5 @@ most of swift lint principles
 clean code solid principles
 
 and i used XCTest framework for Clean-Swift unit-testing and wrote some tests for Search scene.
+
 -------------------------------------------
