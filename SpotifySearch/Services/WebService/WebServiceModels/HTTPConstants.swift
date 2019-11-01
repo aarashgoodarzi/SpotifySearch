@@ -60,6 +60,17 @@ extension HTTP {
         
     }
     
+    //**
+    enum Parameters {
+        static let query = "q"
+        static let type = "type"
+    }
+    
+    //**
+    enum ParametersValues {
+        static let typeValue = "track"
+    }
+    
     enum ContentType {
         case any
         case json
@@ -85,15 +96,15 @@ extension HTTP {
             }
         }
     }
+    
+    
+    //**
+    static var baseHeaders: [String: String?] {
+        return [HTTP.Headers.Authorization: TokenProvider.value]
+    }
+    
 }
 
-
-//**
-var baseRequestHeaders: [String: String] {
-  return [HTTP.Headers.UserAgent: HTTP.HeaderValues.UserAgent,
-          HTTP.Headers.AcceptLanguage: HTTP.HeaderValues.AcceptLanguage,
-          HTTP.Headers.ApplicationName: HTTP.HeaderValues.applicationName]
-}
 
 
 

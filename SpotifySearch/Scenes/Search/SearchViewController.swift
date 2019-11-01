@@ -11,9 +11,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol SearchDisplayLogic: AnyObject {
-    
+    func displaySuccessSearchTracks(viewModel: Search.Tracks.ViewModel.Success)
+    func displayNoConnectionSearchTracks(viewModel: Search.Tracks.ViewModel.Failure)
+    func displayServerErrorSearchTracks(viewModel: Search.Tracks.ViewModel.Failure)
 }
 
 class SearchViewController: UIViewController {
@@ -37,7 +41,15 @@ class SearchViewController: UIViewController {
     
     
     //MARK: Outlets and vars
+    @IBOutlet weak var tracksTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
+    private var tracks: [ServerModels.Response.TracksModel.Item]? {
+        didSet {
+            tracksTableView.reloadData()
+        }
+    }
+    private var disposeBag: DisposeBag?
     
     // MARK: Setup
     private func setup() {
@@ -56,19 +68,121 @@ class SearchViewController: UIViewController {
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        disposeBag = DisposeBag()
+        prepareUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        disposeBag = nil
     }
     
     //MARK: Actions
     
     
     //MARK: Funcs
+    func prepareUI() {
+        prepareSearchBar()
+        prepareTableView()
+    }
     
+    //**
+    func prepareSearchBar() {
+        prepareSearchBarThrottle()
+        changeSearchColor()
+    }
+    
+    //**
+    func prepareSearchBarThrottle() {
+        
+        guard let disposeBag = disposeBag else {
+            return
+        }
+        searchBar
+            .rx.text
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .flatMapLatest({ text -> Observable<String> in
+                guard let text = text else {
+                    return Observable.just("")
+                }
+                return Observable.just(text)
+            })
+            
+            .distinctUntilChanged()
+            .subscribe { query in
+                self.searchTracks(query: query.element)
+        }.disposed(by: disposeBag)
+    }
+    
+    //**
+    func changeSearchColor() {
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = .white
+    }
+
+    
+    //**
+    func prepareTableView() {
+        tracksTableView.tableFooterView = UIView()
+        tracksTableView.delegate = self
+        tracksTableView.dataSource = self
+    }
+    
+    //**
+    func searchTracks(query: String?) {
+        guard let query = query, !query.isEmpty else {
+            tracksTableView.reloadData()
+            return
+        }
+        let request = Search.Tracks.Request(query: query)
+        interactor?.searchTracks(request: request)
+    }
     
     //end of class
 }
 
 //MARK: - Extensions
 extension SearchViewController: SearchDisplayLogic {
+    
+    func displaySuccessSearchTracks(viewModel: Search.Tracks.ViewModel.Success) {
+        self.tracks = viewModel.tracks
+    }
+    
+    func displayNoConnectionSearchTracks(viewModel: Search.Tracks.ViewModel.Failure) {
+        Global.Funcs.showNoConnectionAlert()
+    }
+    
+    func displayServerErrorSearchTracks(viewModel: Search.Tracks.ViewModel.Failure) {
+        Global.Funcs.showAlert(message: viewModel.message)
+    }
+    
+}
+
+//***
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tracks?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tracksTableView.dequeueReusableCell(withIdentifier: Strings.Identifiers.TrackCell, for: indexPath) as? TrackCell else {
+            return UITableViewCell()
+        }
+        
+        //let cell33 = tableView.dequeueReusableCell(withIdentifier: Strings.Identifiers.TrackCell, for: indexPath)
+        let track = tracks?[indexPath.row]
+        cell.set(track: track)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
     
 }

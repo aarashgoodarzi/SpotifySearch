@@ -25,8 +25,8 @@ extension Global.Funcs {
 //MARK: - log
 extension Global.Funcs {
     
-    static func log(_ message: Any, file: String = #file, function: String = #function, line: Int = #line, column: Int = #column, color: LogingColor = .orange) {
-        print("*** \n \n ","\(file) : \(function) : \(line) : \(column) - \(message)","\n \n ***")
+    static func log(_ message: Any, file: String = #file, function: String = #function, line: Int = #line, color: LogingColor = .orange) {
+        print("*** \n \n ","\(file) : \(function) - line: \(line)- \n \(message)","\n \n ***")
     }
     
      enum LogingColor: String {

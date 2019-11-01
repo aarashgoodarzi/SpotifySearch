@@ -9,9 +9,19 @@
 import Foundation
 
 
-struct ServerErrorModel: ServerModel {
-    let messages: [String]?
-    let statusCode: Int
+extension ServerModels {
+    struct ServerErrorModel: Codable, Error {
+        let error: Error
+        
+        // MARK: - Error
+        struct Error: Codable {
+            let status: Int
+            let message: String
+        }
+    }
+    
+    //**
+    struct NoConnectionError: Error {
+        let message: String = "No connection!"
+    }
 }
-
-

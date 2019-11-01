@@ -21,8 +21,8 @@ private var _baseURL: String {
 struct URLPath {
     
     let component: String
-    var url: NSURL? {
-        return NSURL(string: component)
+    var getURL: URL? {
+        return URL(string: component)
     }
     
     private init(_ rawValue: String) {
@@ -44,9 +44,8 @@ struct URLPath {
     }
     
     
-    //MARK: URLs
+    //MARK: - URLs
     private (set) static var baseURL = URLPath(_baseURL)
-    static let api = URLPath("api/v1")
-    static let apiV2 = URLPath("api/v2")
+    static let search = URLPath("search")
     
 }

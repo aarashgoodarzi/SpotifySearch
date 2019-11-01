@@ -99,4 +99,5 @@ struct KeychainProvider {
 //extend keys
 extension Global.Keys {
     static let accessToken = "accessToken"
+    static let firstRun = "firstRun"
 }

@@ -13,7 +13,7 @@ import Alamofire
 
 //MARK: - Web Service Provider
 protocol WebServiceProvider {
-    static func request<T: Codable>(_ request: HTTPRequest<T>, completion: @escaping (_ result: Result<T>, _ statusCode: Int) -> Void )
+    static func request<T: ServerModelProtocol>(_ request: HTTP.Request<T>, completion: @escaping (_ result: Result<T>) -> Void )
     static func cancelAllRequests()
 }
 
@@ -21,37 +21,65 @@ protocol WebServiceProvider {
 public enum WebServcie: WebServiceProvider {
     
     //MARK: Request
-    static func request<T: Codable>(_ request: HTTPRequest<T>, completion: @escaping (_ result: Result<T>, _ statusCode: Int) -> Void ) {
+    static func request<T: ServerModelProtocol>(_ request: HTTP.Request<T>, completion: @escaping (_ result: Result<T>) -> Void ) {
         
-        Alamofire.request(URL(fileURLWithPath: "asd"), method: HTTPMethod.get, parameters: [:], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        guard let url = request.url.getURL, let httpMethod = HTTPMethod(rawValue: request.httpMethod.rawValue) else {
+            return
+        }
+        
+        guard let headers = request.headers as? HTTPHeaders else {
+            return
+        }
+        Alamofire.request(url, method: httpMethod, parameters: request.parameters, encoding: URLEncoding.default, headers: headers)
+            .validate(statusCode: request.validStatusCodes)
+            .responseJSON { response in
+            
+                //no connection
+            guard let data = response.data else {
+                let error = ServerModels.NoConnectionError()
+                completion(Result.failure(error))
+                Global.Funcs.log("No data received!")
+                return
+            }
+            
             switch response.result {
+                
             case .success:
                 
-                guard let data = response.data else {
-                    Global.Funcs.log("No data received!")
-                    return
-                }
                 do {
                     let decodedObject = try JSONDecoder().decode(T.self, from: data)
-                    let statusCode = response.response?.statusCode ?? 0
-                    completion(Result.success(decodedObject), statusCode)
+                    completion(Result.success(decodedObject))
                 } catch let error {
-                    
-                    let message = "could not decode to \(T.self) \n \(error.localizedDescription)"
-                    Global.Funcs.log(message)
-                    let statusCode = response.response?.statusCode ?? 0
-                    completion(Result.failure(error), statusCode)
+                        let message = "could not decode to \(T.self) \n \(error.localizedDescription)"
+                        Global.Funcs.log(message)
+                        completion(Result.failure(error))
                 }
                 
-            case .failure(let error):
-                Global.Funcs.log("No response from server for: \n \(request.url) \n \(error.localizedDescription)")
-                let statusCode = response.response?.statusCode ?? 0
-                completion(Result.failure(error), statusCode)
+            case .failure:
+                do {
+                    
+                    //token expired
+                    let statusCode = response.response?.statusCode ?? 0
+                    if statusCode == HTTP.StatusCode.unauthorized.rawValue {
+                        print("\n --- Token Expired --- \n")
+                        goToLogin()
+                        return
+                    }
+                    
+                    //server Error
+                    let serverErrorModel = try JSONDecoder().decode(ServerModels.ServerErrorModel.self, from: data)
+                    completion(Result.failure(serverErrorModel))
+                } catch let error {
+                    Global.Funcs.log("No response from server for: \n \(request.url.component) \n error : \(error)")
+                    completion(Result.failure(error))
+                }
+                
             }
         }
     }
     
-    //MARK: cancelAllRequests
+
+    //MARK: cancel All Requests
     static func cancelAllRequests() {
         
         if #available(iOS 9.0, *) {
@@ -66,6 +94,15 @@ public enum WebServcie: WebServiceProvider {
             }
         }
     }
+    
+    //MARK: get access token
+    static func goToLogin() {
+        
+        TokenProvider.delete()
+        let searchVc = UIApplication.shared.keyWindow?.rootViewController?.topViewController
+        DispatchQueue.main.async {
+            searchVc?.dismiss(animated: true, completion: nil)
+        }
+        
+    }
 }
-
-

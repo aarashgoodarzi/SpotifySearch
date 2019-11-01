@@ -13,13 +13,34 @@
 import UIKit
 
 protocol SearchPresentationLogic: AnyObject {
-    
+    func presentSearchTracks(response: Search.Tracks.Response)
 }
 
 class SearchPresenter: SearchPresentationLogic {
     
     weak var viewController: SearchDisplayLogic?
     
-    
+    func presentSearchTracks(response: Search.Tracks.Response) {
+        
+        switch response.state {
+        case .success(let tracks):
+            
+            let viewModel = Search.Tracks.ViewModel.Success(tracks: tracks)
+            viewController?.displaySuccessSearchTracks(viewModel: viewModel)
+            
+        case .failure(let error):
+            
+            //server error
+            if let serverError = error as? ServerModels.ServerErrorModel {
+                let viewModel = Search.Tracks.ViewModel.Failure(message: serverError.error.message)
+                viewController?.displayServerErrorSearchTracks(viewModel: viewModel)
+                return
+            }
+            
+            //error
+            let viewModel = Search.Tracks.ViewModel.Failure(message: error.localizedDescription)
+            viewController?.displayNoConnectionSearchTracks(viewModel: viewModel)
+        }
+    }
     //end of class
 }

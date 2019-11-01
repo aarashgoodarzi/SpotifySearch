@@ -43,6 +43,12 @@
 		EFA90D4D2369BB5B00F07C46 /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D4C2369BB5B00F07C46 /* TokenProvider.swift */; };
 		EFA90D4F2369BB9800F07C46 /* KeychainProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D4E2369BB9800F07C46 /* KeychainProvider.swift */; };
 		EFA90D512369E2E800F07C46 /* ReachabilityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D502369E2E800F07C46 /* ReachabilityProvider.swift */; };
+		EFA90D53236A2D9A00F07C46 /* SearchNetworkingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D52236A2D9A00F07C46 /* SearchNetworkingModels.swift */; };
+		EFA90D55236A2E5C00F07C46 /* SearchHTTPHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D54236A2E5C00F07C46 /* SearchHTTPHelpers.swift */; };
+		EFA90D59236A3C7900F07C46 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D58236A3C7900F07C46 /* TrackCell.swift */; };
+		EFA90D5B236A3DCE00F07C46 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D5A236A3DCE00F07C46 /* Strings.swift */; };
+		EFA90D5D236ACEE400F07C46 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D5C236ACEE400F07C46 /* UIImage.swift */; };
+		EFA90D5F236AEC8900F07C46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA90D5E236AEC8900F07C46 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +92,12 @@
 		EFA90D4C2369BB5B00F07C46 /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		EFA90D4E2369BB9800F07C46 /* KeychainProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainProvider.swift; sourceTree = "<group>"; };
 		EFA90D502369E2E800F07C46 /* ReachabilityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityProvider.swift; sourceTree = "<group>"; };
+		EFA90D52236A2D9A00F07C46 /* SearchNetworkingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNetworkingModels.swift; sourceTree = "<group>"; };
+		EFA90D54236A2E5C00F07C46 /* SearchHTTPHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHTTPHelpers.swift; sourceTree = "<group>"; };
+		EFA90D58236A3C7900F07C46 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
+		EFA90D5A236A3DCE00F07C46 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		EFA90D5C236ACEE400F07C46 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		EFA90D5E236AEC8900F07C46 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,9 +173,9 @@
 		EFA90CE72368A12300F07C46 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				EFA90D57236A385400F07C46 /* Resources */,
 				EFA90D402368B11E00F07C46 /* LoginPresenter.swift */,
 				EFA90D412368B11E00F07C46 /* LoginRouter.swift */,
-				EFA90D422368B11E00F07C46 /* LoginModels.swift */,
 				EFA90D432368B11E00F07C46 /* LoginViewController.swift */,
 				EFA90D442368B11E00F07C46 /* LoginInteractor.swift */,
 			);
@@ -173,9 +185,9 @@
 		EFA90CE82368A13A00F07C46 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				EFA90D56236A383D00F07C46 /* Resources */,
 				EFA90D362368B10800F07C46 /* SearchPresenter.swift */,
 				EFA90D372368B10800F07C46 /* SearchRouter.swift */,
-				EFA90D382368B10800F07C46 /* SearchModels.swift */,
 				EFA90D392368B10800F07C46 /* SearchViewController.swift */,
 				EFA90D3A2368B10800F07C46 /* SearchInteractor.swift */,
 			);
@@ -198,6 +210,7 @@
 				EFA90CFA2368A24700F07C46 /* Containers.swift */,
 				EFA90CFB2368A24700F07C46 /* Vars.swift */,
 				EFA90CFC2368A24700F07C46 /* Funcs.swift */,
+				EFA90D5A236A3DCE00F07C46 /* Strings.swift */,
 			);
 			path = "Namspaces And Containers";
 			sourceTree = "<group>";
@@ -205,6 +218,8 @@
 		EFA90CFD2368A24700F07C46 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				EFA90D5E236AEC8900F07C46 /* ViewController.swift */,
+				EFA90D5C236ACEE400F07C46 /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -280,6 +295,25 @@
 				EFA90D302368B0E600F07C46 /* TrackInteractor.swift */,
 			);
 			path = Track;
+			sourceTree = "<group>";
+		};
+		EFA90D56236A383D00F07C46 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90D382368B10800F07C46 /* SearchModels.swift */,
+				EFA90D52236A2D9A00F07C46 /* SearchNetworkingModels.swift */,
+				EFA90D54236A2E5C00F07C46 /* SearchHTTPHelpers.swift */,
+				EFA90D58236A3C7900F07C46 /* TrackCell.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EFA90D57236A385400F07C46 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EFA90D422368B11E00F07C46 /* LoginModels.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFA90D59236A3C7900F07C46 /* TrackCell.swift in Sources */,
 				EFA90D002368A24700F07C46 /* Containers.swift in Sources */,
 				EFA90D1A2368A2CB00F07C46 /* HTTPRequest.swift in Sources */,
 				EFA90D3C2368B10800F07C46 /* SearchRouter.swift in Sources */,
@@ -406,6 +441,7 @@
 				EFA90D352368B0E600F07C46 /* TrackInteractor.swift in Sources */,
 				EFA90CFF2368A24700F07C46 /* Constants.swift in Sources */,
 				EFA90D492368B11E00F07C46 /* LoginInteractor.swift in Sources */,
+				EFA90D5B236A3DCE00F07C46 /* Strings.swift in Sources */,
 				EFA90D452368B11E00F07C46 /* LoginPresenter.swift in Sources */,
 				EFA90D472368B11E00F07C46 /* LoginModels.swift in Sources */,
 				EFA90D322368B0E600F07C46 /* TrackRouter.swift in Sources */,
@@ -415,7 +451,9 @@
 				EFA90D332368B0E600F07C46 /* TrackModels.swift in Sources */,
 				EFA90D462368B11E00F07C46 /* LoginRouter.swift in Sources */,
 				EFA90D512369E2E800F07C46 /* ReachabilityProvider.swift in Sources */,
+				EFA90D5F236AEC8900F07C46 /* ViewController.swift in Sources */,
 				EFA90D1B2368A2CB00F07C46 /* URLPath.swift in Sources */,
+				EFA90D55236A2E5C00F07C46 /* SearchHTTPHelpers.swift in Sources */,
 				EFA90D022368A24700F07C46 /* Funcs.swift in Sources */,
 				EFA90D3D2368B10800F07C46 /* SearchModels.swift in Sources */,
 				EFA90D082368A27600F07C46 /* Storyboard.swift in Sources */,
@@ -425,8 +463,10 @@
 				EFA90D3E2368B10800F07C46 /* SearchViewController.swift in Sources */,
 				EFA90CC923689D8B00F07C46 /* AppDelegate.swift in Sources */,
 				EFA90D1C2368A2CB00F07C46 /* ServerErrorModel.swift in Sources */,
+				EFA90D5D236ACEE400F07C46 /* UIImage.swift in Sources */,
 				EFA90D4B2369756900F07C46 /* SpotifyLoginProvicer.swift in Sources */,
 				EFA90D192368A2CB00F07C46 /* APIError.swift in Sources */,
+				EFA90D53236A2D9A00F07C46 /* SearchNetworkingModels.swift in Sources */,
 				EFA90D342368B0E600F07C46 /* TrackViewController.swift in Sources */,
 				EFA90D3B2368B10800F07C46 /* SearchPresenter.swift in Sources */,
 			);

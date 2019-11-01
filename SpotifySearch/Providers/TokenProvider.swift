@@ -20,7 +20,14 @@ struct TokenProvider {
     
     //**
     static func save(token: String?) {
-        KeychainProvider.set(value: token, for: Global.Keys.accessToken)
+        guard let token = token else {
+            return
+        }
+        let bearerToken = "Bearer " + token
+        #if Debug
+        print(bearerToken)
+        #endif
+        KeychainProvider.set(value: bearerToken, for: Global.Keys.accessToken)
     }
     
     //**

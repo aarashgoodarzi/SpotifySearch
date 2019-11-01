@@ -12,4 +12,6 @@ target 'SpotifySearch' do
    pod 'RxCocoa', '~> 5'
    pod 'SpotifyLogin', '~> 0.1'
    pod 'ReachabilitySwift'
+   pod 'Kingfisher', '~> 5.0'
+   pod 'Bagel', '~>  1.3.2'
 end

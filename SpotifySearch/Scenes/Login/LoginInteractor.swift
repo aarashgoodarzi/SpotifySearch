@@ -26,6 +26,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     func checkLoginState(request: Login.CheckState.Request) {
         
+        //here because api calling is handeled by SpotifyLogn  i used Reachability for checking connction
         ReachabilityProvider.noConnection {
             let response = Login.CheckState.Response(state: nil)
             self.presenter?.presentCheckLoginState(response: response)

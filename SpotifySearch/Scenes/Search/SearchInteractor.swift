@@ -13,7 +13,7 @@
 import UIKit
 
 protocol SearchBusinessLogic: AnyObject {
-    
+    func searchTracks(request: Search.Tracks.Request)
 }
 
 protocol SearchDataStore {
@@ -24,6 +24,25 @@ class SearchInteractor: SearchBusinessLogic, SearchDataStore {
     
     var presenter: SearchPresentationLogic?
     
-    
+    func searchTracks(request: Search.Tracks.Request) {
+        
+        let httpRequest = HTTP.Heplers.search(trackName: request.query)
+        WebServcie.request(httpRequest) { result in
+            
+            //error
+            if let error = result.error {
+                let response = Search.Tracks.Response(state: Result.failure(error))
+                self.presenter?.presentSearchTracks(response: response)
+                return
+            }
+            
+            //success
+            guard let tracks = result.value?.tracks?.items else {
+                return
+            }
+            let response = Search.Tracks.Response(state: Result.success(tracks))
+            self.presenter?.presentSearchTracks(response: response)
+        }
+    }
     //end of class
 }

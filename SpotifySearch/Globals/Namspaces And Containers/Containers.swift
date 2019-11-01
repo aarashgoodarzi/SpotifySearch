@@ -29,11 +29,17 @@ enum Global {
 
 //MARK: Server Models
 enum ServerModels {
+    enum Response {
+        
+    }
     
+    enum DTO {
+        
+    }
 }
 
 //MARK: Server Model
-protocol ServerModel: Codable {
+protocol ServerModelProtocol: Codable {
     //all the models should implement this protocol
 }
 
@@ -44,3 +50,17 @@ enum HTTP {
     }
 }
 
+//MARK: - Strings
+enum Strings {
+    enum Segues {
+        
+    }
+    
+    enum Identifiers {
+        
+    }
+    
+    enum NibNames {
+        
+    }
+}
