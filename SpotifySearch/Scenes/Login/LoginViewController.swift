@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
     
     //MARK: - Outlets and vars
     @IBOutlet weak var retryBtn: UIButton!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     // MARK: Setup
     private func setup() {
@@ -56,12 +57,7 @@ class LoginViewController: UIViewController {
         router.dataStore = interactor
     }
     
-    // MARK: - View lifecycle
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//    }
-    
+    // MARK: - View lifecycle    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkLoginState()
@@ -88,6 +84,10 @@ class LoginViewController: UIViewController {
     
     //**
     func checkLoginState() {
+        
+        //this should be on network layer but this call will be handledby spotify login
+        //Global.Vars.indicator.start()
+        indicator.startAnimating()
         let request = Login.CheckState.Request()
         interactor?.checkLoginState(request: request)
     }
@@ -100,6 +100,7 @@ extension LoginViewController: LoginDisplayLogic {
  
     func displaySuccessCheckLoginState(viewModel: Login.CheckState.ViewModel.Success) {
         
+        indicator.stopAnimating()
         //we have access token
         if viewModel.isUserLogedIn {
             router?.routeToSearch()
@@ -111,11 +112,13 @@ extension LoginViewController: LoginDisplayLogic {
     }
     
     func displayNoConnectionCheckLoginState(viewModel: Login.CheckState.ViewModel.Failure) {
+        indicator.stopAnimating()
         retryBtn.isHidden = false
         Global.Funcs.showNoConnectionAlert()
     }
 
     func displayServerErrorCheckLoginState(viewModel: Login.CheckState.ViewModel.Failure) {
+        indicator.stopAnimating()
         prepareLoginButton()
         Global.Funcs.showAlert(message: viewModel.message)
     }
@@ -124,6 +127,7 @@ extension LoginViewController: LoginDisplayLogic {
 //***
 extension LoginViewController: SpotifyLoginDelegate {
     func loginSuccessfull() {
+        indicator.stopAnimating()
         checkLoginState()
     }
 }

@@ -24,7 +24,7 @@ class TrackPresenter: TrackPresentationLogic {
         
         guard let name = response.track?.name,
             let singer = response.track?.artists?.first?.name,
-            let album = response.track?.artists?.first?.name,
+            let album = response.track?.album?.name,
             let imageUrl = response.track?.album?.images?.first?.url,
             let popularity = response.track?.popularity,
             let id = response.track?.id else {

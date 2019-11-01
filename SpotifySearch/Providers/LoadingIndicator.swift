@@ -19,19 +19,19 @@ protocol InidicatorProvider {
 class Indoicator: InidicatorProvider {
     
     func start() {
-        print("loadind started ....")
+        print("loading started ....")
     }
     
     func stop() {
-         print("loadind stoped.")
+         print("loading stoped.")
     }
     
     func stop(withMessage: String) {
-        print("loadind stoped:  \(withMessage)")
+        print("loading stoped:  \(withMessage)")
     }
     
     func start(withMessage: String) {
-        print("loadind started:  \(withMessage)")
+        print("loadind starteg:  \(withMessage)")
     }
     
     

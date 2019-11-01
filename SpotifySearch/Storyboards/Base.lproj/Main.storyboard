@@ -37,18 +37,24 @@
                                     <action selector="retryBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DCz-Ea-pCM"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ybJ-uj-RXv">
+                                <rect key="frame" x="150" y="428" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1035257448" green="0.1035257448" blue="0.1035257448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4we-YO-IQx" secondAttribute="bottom" constant="50" id="02D-de-SbJ"/>
+                            <constraint firstItem="ybJ-uj-RXv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2VX-Ro-akr"/>
                             <constraint firstItem="4we-YO-IQx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7Gn-Qc-gIT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4we-YO-IQx" secondAttribute="trailing" id="AoB-HJ-tdv"/>
+                            <constraint firstItem="4we-YO-IQx" firstAttribute="top" secondItem="ybJ-uj-RXv" secondAttribute="bottom" constant="20" id="Il4-WS-0JI"/>
                             <constraint firstItem="fUl-Ut-eAh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="h6t-Gy-0uJ"/>
                             <constraint firstItem="fUl-Ut-eAh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kR1-xY-gMM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="ybJ-uj-RXv" id="cmI-y1-1NM"/>
                         <outlet property="retryBtn" destination="4we-YO-IQx" id="ovc-EZ-1bh"/>
                     </connections>
                 </viewController>
